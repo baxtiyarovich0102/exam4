@@ -17,4 +17,4 @@ let Protector = authErrorHandler(async (req, res, next) => {
 	next()
 })
 
-module.exports = Protector
+module.exports = {Protector}

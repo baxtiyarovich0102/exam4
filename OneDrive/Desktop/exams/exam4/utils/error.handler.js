@@ -1,4 +1,4 @@
-const responscha = require("./response.js")
+const responscha = require("../utils/response")
 
 const errorHandler = (func) => {
     return (req, res, next) => {
