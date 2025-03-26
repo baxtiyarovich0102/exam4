@@ -3,15 +3,21 @@ const express = require("express");
 let app = express();
 let cookieParser = require("cookie-parser");
 
-
+const authRouter = require("./routes/auth.route.js");
+const userRouter = require("./routes/user.route.js");
 
 const errController = require("./controllers/error.controller.js");
 const connectDb = require("./config/db.js");
 
+
+connectDb()
 app.use(express.json());
+app.use(express.urlencoded({extended: false}))
+app.use("/uploads", express.static( "./uploads"))
 app.use(cookieParser());
 app.use(errController)
-connectDb()
+app.use("/auth", authRouter)
+app.use("/users", userRouter)
 
 
 
